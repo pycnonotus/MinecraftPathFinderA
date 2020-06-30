@@ -1,0 +1,4 @@
+name: PathFinderAStar
+version: ${project.version}
+main: pycnonotus.anton.Main
+api-version: 1.15
