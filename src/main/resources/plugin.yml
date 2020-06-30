@@ -2,3 +2,8 @@ name: PathFinderAStar
 version: ${project.version}
 main: pycnonotus.anton.Main
 api-version: 1.15
+
+commands:
+  path:
+    description: Your description
+    usage: /<command>
