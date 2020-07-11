@@ -16,22 +16,32 @@ public class PathFinder implements CommandExecutor {
         if( sender instanceof Player){
 
 
-            if(args.length<3){
+            if (args.length < 3) {
                 System.out.println(" bassa :>");
-                return  false;
+                return false;
             }
 
             System.out.println(" blop a commands");
+            double x;
+            double y;
+            double z;
+            try {
+                x = Double.parseDouble(args[0]);
+                y = Double.parseDouble(args[1]);
+                z = Double.parseDouble(args[2]);
+            } catch (Exception e) {
 
-            double x = Double.parseDouble(args[0]);
-            double y = Double.parseDouble(args[1]);
-            double z = Double.parseDouble(args[2]);
+                return false;
+            }
+
 
             pycnonotus.anton.PathFinder pathFinder = new pycnonotus.anton.PathFinder(
-                    ((Player)sender).getLocation(),
-                    new Location(((Player) sender).getWorld(),x,y,z)
+                    new Location(((Player) sender).getWorld(), x, y, z),
+                    ((Player) sender).getLocation(),
+                    (Player) sender
             );
 
+            System.out.println("im here");
             pathFinder.find();
 
             return  true;
