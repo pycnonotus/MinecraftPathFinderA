@@ -8,6 +8,8 @@ package pycnonotus.anton;
  * TODO after: make an intrface \ api class
  * TODO after after: clean up code and make names ok (kind of ugly now :<)
  * TODO i : add doc!
+ * <p>
+ * TODO: add check if path can't be done in time
  */
 
 import org.bukkit.Color;
@@ -54,8 +56,9 @@ public class PathFinder {
 
             IBlock[] arrBlock = open.stream().toArray(IBlock[]::new);
             IBlock corent = arrBlock[0];
+            //TODO change from for, for is ugly and slow
             for (int i = 1; i < arrBlock.length; i++) {
-                System.out.println("  ss  " + arrBlock[i]);
+
                 if (arrBlock[i].fCost < corent.fCost) {
                     corent = arrBlock[i];
                 }
@@ -101,7 +104,18 @@ public class PathFinder {
         while (ptBlock != null) {
             System.out.println("  path is:: " + ptBlock.toString());
             Location loc = ptBlock.location;
-            player.spawnParticle(Particle.REDSTONE, loc, 1, 0, 0, 0, 0, new Particle.DustOptions(Color.RED, 10));
+            //TODO: clean this up make enum for this and move the trail to outer function
+            final Particle.DustOptions white = new Particle.DustOptions(Color.WHITE, 0.22F);
+            final Particle.DustOptions white_1 = new Particle.DustOptions(Color.fromRGB(181, 239, 247), 0.42F);
+            final Particle.DustOptions white_2 = new Particle.DustOptions(Color.fromRGB(77, 133, 245), 0.55F);
+            final Particle.DustOptions white_3 = new Particle.DustOptions(Color.fromRGB(36, 97, 218), 0.68F);
+            final Particle.DustOptions white_4 = new Particle.DustOptions(Color.fromRGB(21, 66, 156), 0.80F);
+
+            final Particle.DustOptions blue_1 = new Particle.DustOptions(Color.fromRGB(64, 97, 206), 0.35F);
+            final Particle.DustOptions blue_2 = new Particle.DustOptions(Color.fromRGB(82, 134, 193), 0.60F);
+            final Particle.DustOptions blue_3 = new Particle.DustOptions(Color.fromRGB(136, 190, 252), 10.85F);
+
+            player.spawnParticle(Particle.REDSTONE, loc, 10, 0, 0, 0, 1, blue_3);
             ptBlock = ptBlock.dad;
 
         }
@@ -128,7 +142,8 @@ public class PathFinder {
             Block block = player.getWorld().getBlockAt(location);
             isValid = block.isPassable(); //need to check that it aint tunel
             if (isValid) {
-                isValid = !location.add(0, -1, 0).getBlock().isPassable();
+                //TODO fix air check , idk why but the air check fails :O
+                //isValid = !location.add(0, -1, 0).getBlock().isPassable()&&!location.add(0,-2,0).getBlock().isPassable();
             }
         }
 
