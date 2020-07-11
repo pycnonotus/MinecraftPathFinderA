@@ -1,5 +1,10 @@
 package pycnonotus.anton;
-
+/**
+ * TODO: add a aysync func
+ * change it to work with more stream? cuz for are lazy and ugly code :|
+ * make the function to check if player is moved
+ * change from set to a faster collection?
+ */
 
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -117,7 +122,7 @@ public class PathFinder {
             hCost = calcDestinyCost(location, destinyLocation);
             fCost = gCost + hCost;
             Block block = player.getWorld().getBlockAt(location);
-            isValid = block.isPassable(); // TODO: add check if is too high?
+            isValid = block.isPassable(); //need to check that it aint tunel
             if (isValid) {
                 isValid = !location.add(0, -1, 0).getBlock().isPassable();
             }
