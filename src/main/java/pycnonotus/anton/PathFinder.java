@@ -4,6 +4,10 @@ package pycnonotus.anton;
  * change it to work with more stream? cuz for are lazy and ugly code :|
  * make the function to check if player is moved
  * change from set to a faster collection?
+ * <p>
+ * TODO after: make an intrface \ api class
+ * TODO after after: clean up code and make names ok (kind of ugly now :<)
+ * TODO i : add doc!
  */
 
 import org.bukkit.Color;

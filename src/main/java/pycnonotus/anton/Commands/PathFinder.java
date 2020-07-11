@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 
 public class PathFinder implements CommandExecutor {
 
+    //TODO: add check for comand
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         for (int i = 0; i < args.length; i++) {
